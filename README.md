@@ -11,4 +11,9 @@
 
 3. Simulation slow subscriber
 ![subscriber-slow](img/subscriber-slow.png)
-   Berbeda dengan ketika dieksekusi tanpa sleep, terlihat bahwa terdapat spike yang menyentuh angka 11 pada grafik queued message di atas. Hal ini terjadi karena ketika saya menjalankan 3 perintah `cargo run` dengan cepat pada publisher sehingga terdapat 11 pesan yang dikirim perlu dimasukkan ke queue terlebih dahulu.
+   Berbeda dengan ketika dieksekusi tanpa sleep, terlihat bahwa terdapat spike yang menyentuh angka 11 pada grafik queued message di atas. Hal ini terjadi karena ketika saya menjalankan 3 perintah `cargo run` dengan cepat pada publisher sehingga terdapat 11 pesan yang dikirim perlu dimasukkan ke queue terlebih dahulu. <br><br>
+
+4. Reflection and Running at least three subscribers
+   ![subscriber-slow-3](img/slow-3-time.png)
+   ![subscriber-slow-3-chart](img/slow-3-time-chart.png)
+Pada gambar pertama, terlihat bahwa terdapat 3 subscriber yang dijalankan. Dan ketika saya melakukan hal yang sama seperti pada poin nomor 3, yaitu menjalankan 2 perintah cargo run dengan cepat, semua pesan yang dikirim dibagi eksekusinya ke 3 subscriber tersebut. Hal ini mengakibatkan grafik yang dihasilkan seperti pada gambar 2. Meskipun dieksekusi dengan sleep, dapat dilihat dari grafik queued messages, sekarang tidak ada message yang masuk ke queue. Hal ini terjadi karena message telah dieksekusi oleh 3 subscriber berbeda sehingga message tidak perlu lagi mengantri di queue untuk dieksekusi.
